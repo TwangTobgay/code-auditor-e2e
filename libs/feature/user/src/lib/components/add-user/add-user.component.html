@@ -1,31 +1,31 @@
 <selise-start-nav></selise-start-nav>
 <h1>Add User</h1>
 <form [formGroup]="addUserForm" style="display: flex;flex-direction: column">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" data-cy="firstName">
     <mat-label>
       First Name
     </mat-label>
     <input matInput placeholder="Ex. Karm" type="text" formControlName="firstName">
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" data-cy="lastName">
     <mat-label>
       Last Name
     </mat-label>
     <input matInput placeholder="Ex. Yoex" type="text" formControlName="lastName">
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" data-cy="email">
     <mat-label>
       Email
     </mat-label>
     <input matInput placeholder="Ex.gmail.com" formControlName="email">
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" data-cy="password">
     <mat-label>
       Password
     </mat-label>
     <input type="password" matInput formControlName="password">
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" data-cy="confirmPasswd">
     <mat-label>
       Confirm Password
     </mat-label>
@@ -35,13 +35,13 @@
     <mat-label>
       Role
     </mat-label>
-    <mat-select formControlName="role">
-      <mat-option *ngFor="let role of roles" [value]="role">
+    <mat-select formControlName="role" data-cy="dropDown">
+      <mat-option *ngFor="let role of roles" [value]="role" data-cy="roleOptions">
         {{role}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-flat-button color="primary" (click)="addUser()">
+  <button mat-flat-button color="primary" (click)="addUser()" data-cy="addBtn">
     Add User
   </button>
 </form>

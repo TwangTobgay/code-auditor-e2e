@@ -6,37 +6,37 @@
       <mat-label>
         First Name
       </mat-label>
-      <input matInput placeholder="Ex.Kam" formControlName="firstName">
+      <input matInput placeholder="Ex.Kam" formControlName="firstName" data-cy="editFName">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>
         Last Name
       </mat-label>
-      <input matInput placeholder="ex. yoez" formControlName="lastName">
+      <input matInput placeholder="ex. yoez" formControlName="lastName" data-cy="editLName">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>
         Profile Name
       </mat-label>
-      <input matInput placeholder="ex. ky" formControlName="profileName">
+      <input matInput placeholder="ex. ky" formControlName="profileName" data-cy="editProfileName">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>
         Email
       </mat-label>
-      <input matInput placeholder="ex.g@gm.com" formControlName="email">
+      <input matInput placeholder="ex.g@gm.com" formControlName="email" data-cy="editEmail">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>
         Role
       </mat-label>
-      <mat-select formControlName="role">
+      <mat-select formControlName="role" data-cy="editRole">
         <mat-option *ngFor="let role of roles" [value]="role">
           {{role}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-flat-button color="primary" (click)="updateUser()">
+    <button mat-flat-button color="primary" (click)="updateUser()" data-cy="updateBtn">
       Update
     </button>
   </form>

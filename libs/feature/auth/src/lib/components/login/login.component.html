@@ -16,11 +16,11 @@
       </mat-label>
       <input matInput type="password" formControlName="password">
     </mat-form-field>
-    <button mat-flat-button color="primary" (click)="login()">
+    <button mat-flat-button color="primary" (click)="login()" data-cy="login">
       Login
     </button>
     <h1>OR</h1>
-    <button mat-flat-button color="primary" routerLink="/auth/signup">
+    <button mat-flat-button color="primary" routerLink="/auth/signup" data-cy="signUp">
       Sign-Up
     </button>
   </form>

@@ -5,20 +5,20 @@
   <form [formGroup]="addTeamForm">
     <mat-form-field appearance="outline">
       <mat-label>Team Name</mat-label>
-      <input matInput placeholder="Ex. XoDus" formControlName="teamName" type="text">
+      <input matInput placeholder="Ex. XoDus" formControlName="teamName" type="text" data-cy="teamName">
     </mat-form-field>
     <br/>
     <mat-form-field appearance="outline">
       <mat-label>Date Established</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="dateEstd">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <input matInput [matDatepicker]="picker" formControlName="dateEstd" data-cy="dateInput">
+      <mat-datepicker-toggle matSuffix [for]="picker" data-cy='datePicker'></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <br/>
     <mat-form-field appearance="outline">
       <mat-label>Team Lead</mat-label>
-      <mat-select formControlName="teamLead" (ngModelChange)="updateTeamLead()">
-        <mat-option *ngFor="let user of users" [value]="user">
+      <mat-select formControlName="teamLead" (ngModelChange)="updateTeamLead()" data-cy="teamLeadOption">
+        <mat-option *ngFor="let user of users" [value]="user" [attr.data-cy]="user.profileName">
           {{user.profileName}}
         </mat-option>
       </mat-select>
@@ -27,21 +27,21 @@
     <span *ngIf="addTeamForm.controls.teamLead.value">
       <mat-form-field appearance="outline" disabled="true">
         <mat-label>Team Members</mat-label>
-        <mat-select formControlName="teamMembers">
+        <mat-select formControlName="teamMembers" data-cy="teamMember">
           <mat-option *ngFor="let user of users" [value]="user">
             {{user.profileName}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-    <button mat-flat-button color="primary" (click)="addMember()">
+    <button mat-flat-button color="primary" (click)="addMember()" data-cy="addMemberBtn">
       Add Member
     </button>
     </span>
     <br/>
-    <span *ngIf="addMemberSuccess == false" style="color: red">
+    <span *ngIf="addMemberSuccess == false" style="color: red" data-cy="errorMsg1">
       Team Lead Cannot Be A Team Member
     </span>
-    <span *ngIf="createTeamSuccess == false" style="color: red">
+    <span *ngIf="createTeamSuccess == false" style="color: red" data-cy="errorMsg2">
       There has to be atleast one team member
     </span>
     <br/>
@@ -54,7 +54,7 @@
       </div>
     </div>
     <br/>
-    <button mat-flat-button color="primary" (click)="addTeam()">
+    <button mat-flat-button color="primary" (click)="addTeam()" data-cy="addTeamButton">
       Add Team
     </button>
   </form>

@@ -6,5 +6,9 @@
     "allowJs": true,
     "types": ["cypress", "node"]
   },
-  "include": ["src/**/*.ts", "src/**/*.js"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.js",
+    "../../node_modules/@types/jest/index.d.ts"
+  ]
 }

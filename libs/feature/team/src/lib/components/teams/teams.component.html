@@ -3,7 +3,7 @@
   <h3>List of all teams</h3>
   <hr/>
   <ul>
-    <li *ngFor="let team of teams">
+    <li *ngFor="let team of teams" [attr.data-cy]="team.teamName">
       <a routerLink="/teams/{{team.id}}">{{team.teamName}}</a>
     </li>
   </ul>

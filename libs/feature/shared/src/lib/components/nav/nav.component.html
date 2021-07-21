@@ -1,11 +1,11 @@
-<div style="width: 100%; display: flex;justify-content: space-between; margin-bottom: 40px;">
-  <a routerLink="/users">Users</a>
-  <a routerLink="/teams">Teams</a>
-  <a routerLink="/users/approval">Pending Approval</a>
-  <a routerLink="/users/add-user">Add User</a>
-  <a routerLink="/teams/add-team">Add Team</a>
-  <a routerLink="/audits/add-audit">Add Audit</a>
-  <a routerLink="/audits">Audits</a>
-  <button mat-flat-button color="primary" (click)="logout()">Logout</button>
+<div style="width: 100%; display: flex;justify-content: space-between; margin-bottom: 40px;" data-cy="NavBar">
+  <a routerLink="/users" data-cy="users">Users</a>
+  <a routerLink="/teams" data-cy="teams">Teams</a>
+  <a routerLink="/users/approval" data-cy="pendingApproval">Pending Approval</a>
+  <a routerLink="/users/add-user" data-cy="addUser">Add User</a>
+  <a routerLink="/teams/add-team" data-cy="addTeam">Add Team</a>
+  <a routerLink="/audits/add-audit" data-cy="addAudit">Add Audit</a>
+  <a routerLink="/audits" data-cy="audits">Audits</a>
+  <button mat-flat-button color="primary" (click)="logout()" data-cy="logOut">Logout</button>
 </div>
 <router-outlet></router-outlet>

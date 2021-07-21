@@ -8,24 +8,35 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-declare namespace Cypress {
-  interface Chainable<Subject> {
-    login(email: string, password: string): void;
-  }
-}
+// declare namespace Cypress {
+//   interface Chainable<Subject> {
+//     login(email: string, password: string): void;
+//   }
+// }
 //
-// -- This is a parent command --
-Cypress.Commands.add('login', (email, password) => {
-  console.log('Custom command example: Login', email, password);
+
+Cypress.Commands.add('login', (userType, email, password) => {
+  const types = {
+    admin: {
+      email: 'admin@admin.com',
+      password: 'admin123',
+    },
+
+    newUser: {
+      email: 'invalid@test.com',
+      password: 'test123'
+    }
+  };
+
+  const user = types[userType];
+  cy.visit('/auth/login');
+  cy.log('**Logging In**');
+  cy.get("[formcontrolname='email']").type(user.email);
+  cy.get("[type='password']").type(user.password);
+  cy.datacy('login').click();
+
 });
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('datacy', (value) => {
+  cy.get(`[data-cy="${value}"]`);
+})

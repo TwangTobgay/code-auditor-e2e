@@ -4,7 +4,7 @@
   <hr/>
   <div style="display: flex; flex-direction: column;">
     <mat-list>
-      <mat-list-item *ngFor="let audit of audits" style="display: flex; flex-direction: column">
+      <mat-list-item *ngFor="let audit of audits" style="display: flex; flex-direction: column" [attr.data-cy]="audit.auditee.teamName">
         <a routerLink="/audits/{{audit.id}}"><h4>Auditee: {{audit.auditee.teamName}}</h4></a>
         <mat-divider></mat-divider>
       </mat-list-item>

@@ -7,17 +7,17 @@
       <h3>Team ID: {{team.id}}</h3>
       <mat-form-field appearance="outline">
         <mat-label>Team Name</mat-label>
-        <input matInput placeholder="Ex. Xodus" formControlName="teamName">
+        <input matInput placeholder="Ex. Xodus" formControlName="teamName" data-cy="teamName">
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Date of Establishment</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="dateEstd">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker-toggle matSuffix [for]="picker" data-cy="datePicker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Team Lead</mat-label>
-        <mat-select formControlName="teamLead" [compareWith]="byId" [value]="team.teamLead" (ngModelChange)="updateTeamLead()">
+        <mat-select formControlName="teamLead" [compareWith]="byId" [value]="team.teamLead" (ngModelChange)="updateTeamLead()" data-cy="teamLeadOptions">
           <mat-option *ngFor="let user of users" [value]="user">
             {{user.profileName}}
           </mat-option>
@@ -26,13 +26,13 @@
       <div style="display: flex; justify-content: space-between">
         <mat-form-field appearance="outline" style="width: 400px;">
           <mat-label>Team Member</mat-label>
-          <mat-select formControlName="teamMembers">
+          <mat-select formControlName="teamMembers" data-cy="teamMemberOptions">
             <mat-option *ngFor="let user of users" [value]="user">
               {{user.profileName}}
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-flat-button color="primary" style="width: 150px; height: 55px" (click)="addMember()">
+        <button mat-flat-button color="primary" style="width: 150px; height: 55px" (click)="addMember()" data-cy="addMemberBtn">
           Add Member
         </button>
       </div>
@@ -40,7 +40,7 @@
         Team Lead Cannot Be A Team Member
       </span>
       <div style="display: flex; justify-content: space-between;">
-        <mat-card *ngFor="let teamMember of team.teamMembers" style="display: flex; justify-content: space-between; width: 350px; margin-bottom: 40px">
+        <mat-card *ngFor="let teamMember of team.teamMembers" style="display: flex; justify-content: space-between; width: 350px; margin-bottom: 40px" [attr.data-cy]="teamMember.profileName">
           <span>{{teamMember.profileName}}</span>
           <mat-card-actions>
             <button mat-flat-button color="warn" (click)="removeMember(teamMember)">
@@ -49,7 +49,7 @@
           </mat-card-actions>
         </mat-card>
       </div>
-      <button mat-flat-button color="primary" (click)="updateTeam()">
+      <button mat-flat-button color="primary" (click)="updateTeam()" data-cy="updateBtn">
         Update Team
       </button>
     </form>

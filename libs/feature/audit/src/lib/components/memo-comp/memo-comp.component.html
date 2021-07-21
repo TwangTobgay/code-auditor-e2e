@@ -18,26 +18,26 @@
       <mat-label>
         Description
       </mat-label>
-      <textarea matInput formControlName="createMemoDescription"></textarea>
+      <textarea matInput formControlName="createMemoDescription" data-cy="memoDescription"></textarea>
     </mat-form-field>
     <span style="display: flex; justify-content: space-between">
       <mat-form-field appearance="outline" style="width: 300px">
         <mat-label>
           assign to
         </mat-label>
-        <mat-select formControlName="createMemoAssignee">
-          <mat-option *ngFor="let teamMember of audit.auditee.allMembers" [value]="teamMember">
+        <mat-select formControlName="createMemoAssignee" data-cy="assignee">
+          <mat-option *ngFor="let teamMember of audit.auditee.allMembers" [value]="teamMember" [attr.data-cy]="teamMember.profileName">
             {{teamMember.profileName}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-flat-button color="primary" (click)="addMemoAssignee('')" style="width: 150px; height: 45px">
+      <button mat-flat-button color="primary" (click)="addMemoAssignee('')" style="width: 150px; height: 45px" data-cy="addAssigneeBtn">
         Add Assignee
       </button>
     </span>
     <span *ngIf="auditForm.controls.createMemoDesignatedAssignees.value">
         <mat-card *ngFor="let assignee of auditForm.controls.createMemoDesignatedAssignees.value"
-                  style="display: flex; width: 100%; justify-content: space-between">
+                  style="display: flex; width: 100%; justify-content: space-between" [attr.data-cy]="assignee.profileName">
           <mat-card-content>
             {{assignee.profileName}}
           </mat-card-content>
@@ -47,7 +47,7 @@
           </button>
         </mat-card>
     </span>
-    <button mat-flat-button color="primary" (click)="addMemo()" style="margin-top: 15px; margin-bottom: 15px;">
+    <button mat-flat-button color="primary" (click)="addMemo()" style="margin-top: 15px; margin-bottom: 15px;" data-cy="addMemoBtn">
       Add Memo
     </button>
     <div *ngIf="memoSuccess">
@@ -64,14 +64,14 @@
                     Description
                   </mat-label>
                   <textarea matInput placeholder="Ex.Frontend Validation Error" [value]="eachMemo.description"
-                            formControlName="description"
+                            formControlName="description" data-cy="editMemoDescription"
                   ></textarea>
                 </mat-form-field>
                 <mat-form-field appearance="outline" style="width: 130px">
                   <mat-label>
                     Section
                   </mat-label>
-                  <mat-select formControlName="section">
+                  <mat-select formControlName="section" data-cy="sectionDropDown">
                     <mat-option *ngFor="let section of sections" [value]="section">
                       {{section}}
                     </mat-option>
@@ -90,19 +90,19 @@
                   <mat-label>
                     Assign To
                   </mat-label>
-                  <mat-select formControlName="newMemoAssignee">
+                  <mat-select formControlName="newMemoAssignee" data-cy="editAssignee">
                     <mat-option *ngFor="let teamMember of audit.auditee.allMembers" [value]="teamMember">
                       {{teamMember.profileName}}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
                 <button mat-flat-button color="accent" style="width: 150px; height: 45px"
-                        (click)="addMemoAssignee('memos',i)">
+                        (click)="addMemoAssignee('memos',i)" data-cy="editAssigneeBtn">
                   Add Assignee
                 </button>
               </span>
               <mat-card-content *ngFor="let eachAssignee of eachMemo.controls.assignedTo?.value"
-                                style="display: flex;flex-direction: column;">
+                                style="display: flex;flex-direction: column;" [attr.data-cy]="eachAssignee.profileName">
                 <mat-card style="display: flex; width: 80%; justify-content: space-between">
                   <mat-card-content>
                     {{eachAssignee.profileName}}
@@ -114,7 +114,7 @@
                 </mat-card>
               </mat-card-content>
             </mat-card-content>
-            <button mat-flat-button color="warn" (click)="removeMemo(i, 'memos')">
+            <button mat-flat-button color="warn" (click)="removeMemo(i, 'memos')" data-cy="removeMemoBtn">
               Remove Memo
             </button>
           </mat-card>
@@ -257,7 +257,7 @@
           </mat-card>
         </span>
       </span>
-    <button mat-flat-button color="primary" (click)="updateAudit()">
+    <button mat-flat-button color="primary" (click)="updateAudit()" data-cy="memoUpdateBtn">
       Update
     </button>
   </form>

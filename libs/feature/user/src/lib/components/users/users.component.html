@@ -1,7 +1,7 @@
 <selise-start-nav></selise-start-nav>
 <div *ngIf="storeState$ | async as state">
   <ul>
-    <li *ngFor="let user of state.usersState">
+    <li *ngFor="let user of state.usersState" [attr.data-cy]="user.profileName">
       <a routerLink="/users/{{user.id}}">
         {{user.profileName}}
       </a>
